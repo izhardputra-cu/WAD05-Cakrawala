@@ -6,6 +6,7 @@ const users = ref([]);
 const keadaan = ref('idle');
 const queryPencarian = ref('');
 const riwayatPencarian = ref([]);
+const arahUrutan = ref('asc');
 
 async function muatPengguna() {
   keadaan.value = 'loading';
@@ -25,6 +26,14 @@ const penggunaTersaring = computed(() => {
   const q = queryPencarian.value.toLowerCase().trim();
   if (!q) return users.value;
   return users.value.filter((user) => user.username.toLowerCase().includes(q));
+});
+
+// Pencarian dijalankan lebih dulu. Salin array agar data asal tidak berubah.
+const penggunaTerurut = computed(() => {
+  return [...penggunaTersaring.value].sort((a, b) => {
+    const perbandingan = a.name.localeCompare(b.name, 'id');
+    return arahUrutan.value === 'asc' ? perbandingan : -perbandingan;
+  });
 });
 
 const jumlahHasil = computed(() => penggunaTersaring.value.length);
@@ -47,6 +56,19 @@ watch(queryPencarian, (nilaiBaru) => {
       <input id="pencarian" v-model="queryPencarian" type="search" placeholder="Cari username..." />
     </div>
 
+    <div class="urutan" role="group" aria-label="Urutan nama">
+      <button
+        :class="{ aktif: arahUrutan === 'asc' }"
+        :aria-pressed="arahUrutan === 'asc'"
+        @click="arahUrutan = 'asc'"
+      >Urutkan A-Z</button>
+      <button
+        :class="{ aktif: arahUrutan === 'desc' }"
+        :aria-pressed="arahUrutan === 'desc'"
+        @click="arahUrutan = 'desc'"
+      >Urutkan Z-A</button>
+    </div>
+
     <p v-if="keadaan === 'idle'" role="status">Klik Muat Pengguna untuk menampilkan daftar.</p>
     <p v-else-if="keadaan === 'loading'" role="status">Memuat data...</p>
     <p v-else-if="keadaan === 'empty'" role="status">Tidak ada pengguna ditemukan.</p>
@@ -55,7 +77,7 @@ watch(queryPencarian, (nilaiBaru) => {
       <p role="status">Menampilkan {{ jumlahHasil }} dari {{ users.length }} pengguna</p>
       <p v-if="jumlahHasil === 0">Tidak ada username yang cocok.</p>
       <ul v-else>
-        <UserCard v-for="user in penggunaTersaring" :key="user.id" :user="user" />
+        <UserCard v-for="user in penggunaTerurut" :key="user.id" :user="user" />
       </ul>
     </section>
   </main>
@@ -71,6 +93,8 @@ h1 { margin: 0; font-size: 1.5rem; }
 header p { margin: 0.5rem 0 0; }
 main { max-width: 800px; padding: 1.5rem; margin: auto; }
 .kontrol { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+.urutan { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+.aktif { background: #0b4f6c; color: white; }
 input { max-width: 100%; min-width: 0; }
 ul { list-style: none; padding: 0; border: 1px solid #ddd; border-radius: 4px; background: white; }
 </style>
