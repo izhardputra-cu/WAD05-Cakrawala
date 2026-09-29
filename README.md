@@ -6,10 +6,19 @@ Tugas Web Application Development, Universitas Cakrawala.
 - **NIM:** 25120300032
 - **Akun GitHub:** [izhardputra-cu](https://github.com/izhardputra-cu)
 
-## Technical Assignment 1
+## Isi repo
 
-Jawaban keamanan DOM dan program live search asli tersedia di [`assignment-1`](assignment-1/README.md).
+- `tugas_1`: jawaban dan live search tugas pertama. Buka berkas HTML langsung di browser.
+- `tugas_2`: dashboard Vue 3 untuk Technical Assignment 2.
 
-## Technical Assignment 2
+## Menjalankan tugas kedua
 
-Kelanjutan dashboard Vue 3 dari modul Session 5, dengan detail lokal pada `UserCard.vue` dan pengurutan hasil pencarian melalui chained computed.
+```bash
+cd tugas_2
+npm install
+npm run dev
+```
+
+Buka alamat yang muncul di terminal, lalu klik **Muat Pengguna**. Pencarian memakai username. Setiap kartu memiliki tombol **Lihat Detail**, dan daftar bisa diurutkan menurut nama dengan **Urutkan A-Z** atau **Urutkan Z-A**.
+
+Perlu koneksi internet untuk mengambil data dari JSONPlaceholder. Untuk memeriksa build, jalankan `npm run build` di folder `tugas_2`.
