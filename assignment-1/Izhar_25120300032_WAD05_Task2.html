@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Cari Menu Warteg - Ala Mahasiswa</title>
+<style>
+  body { font-family: 'Comic Sans MS', 'Segoe UI', sans-serif; max-width: 600px; margin: 40px auto; color: #222; }
+  h1 { font-size: 22px; color: #d9480f; }
+  #searchBox { width: 100%; padding: 10px; font-size: 16px; box-sizing: border-box; margin-bottom: 12px; border: 2px solid #d9480f; border-radius: 6px; }
+  #hasilList { list-style: none; padding: 0; }
+  #hasilList li { padding: 10px; background: #fff3e0; margin-bottom: 6px; border-radius: 6px; }
+  #infoJumlah { color: #888; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>🍛 Cari Menu Warteg Deket Kampus</h1>
+<p>Laper tapi bingung mau makan apa? Ketik aja di bawah, nanti auto kefilter, gak usah reload-reload ya gaes.</p>
+
+<input type="text" id="searchBox" placeholder="mau makan apa hari ini...">
+<p id="infoJumlah"></p>
+<ul id="hasilList"></ul>
+
+<script>
+  // nih daftar menunya, taro di array aja biar gampang
+  const daftarMenu = [
+    "Nasi + Ayam Goreng",
+    "Nasi + Telur Balado",
+    "Mie Goreng Spesial",
+    "Nasi + Tempe Orek",
+    "Nasi + Ikan Bawal Goreng",
+    "Nasi + Sayur Sop",
+    "Nasi + Rendang",
+    "Nasi Uduk + Bihun",
+    "Nasi + Perkedel + Tahu",
+    "Nasi + Ayam Bakar"
+  ];
+
+  const inputSearch = document.querySelector("#searchBox");
+  const listHasil = document.querySelector("#hasilList");
+  const infoJumlah = document.querySelector("#infoJumlah");
+
+  // fungsi buat bersihin list sebelum digambar ulang
+  // pake removeChild bukan innerHTML = "" soalnya soalnya emang gaboleh pake innerHTML
+  function bersihinList() {
+    while (listHasil.firstChild) {
+      listHasil.removeChild(listHasil.firstChild);
+    }
+  }
+
+  // ini fungsi utama yang gambar ulang (re-render) list-nya
+  // pake createElement + textContent doang, biar aman dari XSS (lihat jawaban soal 2 ya)
+  function gambarUlangList(menuYangKetampil) {
+    bersihinList();
+    menuYangKetampil.forEach((menu) => {
+      const itemBaru = document.createElement("li");
+      itemBaru.textContent = menu;
+      listHasil.appendChild(itemBaru);
+    });
+    infoJumlah.textContent = "nemu " + menuYangKetampil.length + " dari " + daftarMenu.length + " menu";
+  }
+
+  // tiap kali ngetik (event "input"), langsung difilter pake array.filter, real-time gak pake nunggu enter
+  inputSearch.addEventListener("input", (e) => {
+    const kataKunci = e.target.value.trim().toLowerCase();
+    const hasilFilter = daftarMenu.filter((menu) => {
+      return menu.toLowerCase().includes(kataKunci);
+    });
+    gambarUlangList(hasilFilter);
+  });
+
+  // pas awal buka, tampilin semua menu dulu
+  gambarUlangList(daftarMenu);
+</script>
+
+</body>
+</html>
