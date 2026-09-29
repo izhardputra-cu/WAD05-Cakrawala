@@ -22,3 +22,5 @@ npm run dev
 Buka alamat yang muncul di terminal, lalu klik **Muat Pengguna**. Pencarian memakai username. Setiap kartu memiliki tombol **Lihat Detail**, dan daftar bisa diurutkan menurut nama dengan **Urutkan A-Z** atau **Urutkan Z-A**.
 
 Perlu koneksi internet untuk mengambil data dari JSONPlaceholder. Untuk memeriksa build, jalankan `npm run build` di folder `tugas_2`.
+
+Nama dan username pengguna disesuaikan menjadi nama Indonesia. Semua pengguna memakai email contoh `izhar@example.com`.

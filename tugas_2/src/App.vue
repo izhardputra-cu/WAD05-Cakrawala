@@ -7,6 +7,18 @@ const keadaan = ref('idle');
 const queryPencarian = ref('');
 const riwayatPencarian = ref([]);
 const arahUrutan = ref('asc');
+const namaPengguna = [
+  'Andi Pratama',
+  'Budi Santoso',
+  'Citra Lestari',
+  'Dewi Anggraini',
+  'Eko Saputra',
+  'Fitri Handayani',
+  'Gita Permatasari',
+  'Hendra Wijaya',
+  'Indah Wulandari',
+  'Joko Susilo',
+];
 
 async function muatPengguna() {
   keadaan.value = 'loading';
@@ -15,7 +27,15 @@ async function muatPengguna() {
     if (!response.ok) throw new Error('Status HTTP: ' + response.status);
     const data = await response.json();
     if (!Array.isArray(data)) throw new Error('Data pengguna tidak valid');
-    users.value = data;
+    users.value = data.map((user, index) => {
+      const name = namaPengguna[index] || `Pengguna ${index + 1}`;
+      return {
+        ...user,
+        name,
+        username: name.toLowerCase().replaceAll(' ', ''),
+        email: 'izhar@example.com',
+      };
+    });
     keadaan.value = data.length === 0 ? 'empty' : 'success';
   } catch {
     keadaan.value = 'error';
