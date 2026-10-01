@@ -45,12 +45,25 @@ barang_db = [Barang.model_validate(item) for item in json.loads(seed_path.read_t
 id_berikutnya = max((item.id for item in barang_db), default=0) + 1
 
 
-@app.get("/barang", response_model=list[Barang], tags=["Barang"], summary="Lihat semua barang")
+@app.get(
+    "/barang",
+    response_model=list[Barang],
+    tags=["Barang"],
+    summary="Lihat semua barang",
+    description="Mengambil seluruh barang inventaris, termasuk data awal dari seed JSON.",
+)
 def lihat_barang() -> list[Barang]:
     return barang_db
 
 
-@app.post("/barang", response_model=Barang, status_code=201, tags=["Barang"], summary="Tambah barang")
+@app.post(
+    "/barang",
+    response_model=Barang,
+    status_code=201,
+    tags=["Barang"],
+    summary="Tambah barang",
+    description="Menambah barang baru dengan nama, kategori, jumlah stok, dan lokasi gudang.",
+)
 def tambah_barang(data: BarangBaru) -> Barang:
     global id_berikutnya
     barang = Barang(id=id_berikutnya, **data.model_dump())
@@ -59,7 +72,13 @@ def tambah_barang(data: BarangBaru) -> Barang:
     return barang
 
 
-@app.delete("/barang/{barang_id}", status_code=204, tags=["Barang"], summary="Hapus barang")
+@app.delete(
+    "/barang/{barang_id}",
+    status_code=204,
+    tags=["Barang"],
+    summary="Hapus barang",
+    description="Menghapus barang berdasarkan ID. ID yang tidak ada menghasilkan respons 404.",
+)
 def hapus_barang(barang_id: int) -> None:
     for index, barang in enumerate(barang_db):
         if barang.id == barang_id:
