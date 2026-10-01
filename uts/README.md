@@ -4,11 +4,11 @@ Izhar Rahman Dwiputra · 25120300032 · Soal B
 
 ## Menjalankan
 
-Backend (Python 3.10+):
+Jalankan dari root repo `Tugas_IRD/` di dua terminal. Backend (Python 3.10+):
 
 ```bash
 cd uts/backend
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
