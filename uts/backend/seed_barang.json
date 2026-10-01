@@ -1,0 +1,22 @@
+[
+  {"id": 1, "nama": "Kertas HVS A4 80 gsm", "kategori": "ATK", "jumlah_stok": 120, "lokasi_gudang": "Rak ATK A"},
+  {"id": 2, "nama": "Kertas HVS F4 70 gsm", "kategori": "ATK", "jumlah_stok": 45, "lokasi_gudang": "Rak ATK A"},
+  {"id": 3, "nama": "Pulpen gel hitam", "kategori": "ATK", "jumlah_stok": 86, "lokasi_gudang": "Rak ATK B"},
+  {"id": 4, "nama": "Spidol papan tulis biru", "kategori": "ATK", "jumlah_stok": 7, "lokasi_gudang": "Rak ATK B"},
+  {"id": 5, "nama": "Isi staples nomor 10", "kategori": "ATK", "jumlah_stok": 0, "lokasi_gudang": "Rak ATK B"},
+  {"id": 6, "nama": "Map ordner A4", "kategori": "Arsip", "jumlah_stok": 32, "lokasi_gudang": "Rak Arsip A"},
+  {"id": 7, "nama": "Boks arsip lipat", "kategori": "Arsip", "jumlah_stok": 11, "lokasi_gudang": "Rak Arsip B"},
+  {"id": 8, "nama": "Label folder perekat", "kategori": "Arsip", "jumlah_stok": 3, "lokasi_gudang": "Rak Arsip B"},
+  {"id": 9, "nama": "Printer laser A4", "kategori": "Perangkat Cetak", "jumlah_stok": 4, "lokasi_gudang": "Gudang Perangkat"},
+  {"id": 10, "nama": "Toner printer hitam", "kategori": "Perangkat Cetak", "jumlah_stok": 2, "lokasi_gudang": "Gudang Perangkat"},
+  {"id": 11, "nama": "Pemindai dokumen", "kategori": "Perangkat Cetak", "jumlah_stok": 3, "lokasi_gudang": "Gudang Perangkat"},
+  {"id": 12, "nama": "Mouse nirkabel", "kategori": "Perangkat IT", "jumlah_stok": 0, "lokasi_gudang": "Rak IT A"},
+  {"id": 13, "nama": "Keyboard USB", "kategori": "Perangkat IT", "jumlah_stok": 9, "lokasi_gudang": "Rak IT A"},
+  {"id": 14, "nama": "Router cadangan", "kategori": "Perangkat IT", "jumlah_stok": 2, "lokasi_gudang": "Rak IT B"},
+  {"id": 15, "nama": "UPS 650 VA", "kategori": "Perangkat IT", "jumlah_stok": 12, "lokasi_gudang": "Rak IT B"},
+  {"id": 16, "nama": "Kabel HDMI 2 meter", "kategori": "Perlengkapan Rapat", "jumlah_stok": 15, "lokasi_gudang": "Lemari Rapat"},
+  {"id": 17, "nama": "Proyektor portabel", "kategori": "Perlengkapan Rapat", "jumlah_stok": 6, "lokasi_gudang": "Lemari Rapat"},
+  {"id": 18, "nama": "Kursi kerja ergonomis", "kategori": "Furnitur", "jumlah_stok": 14, "lokasi_gudang": "Gudang Furnitur"},
+  {"id": 19, "nama": "Meja lipat rapat", "kategori": "Furnitur", "jumlah_stok": 5, "lokasi_gudang": "Gudang Furnitur"},
+  {"id": 20, "nama": "Lemari arsip besi", "kategori": "Furnitur", "jumlah_stok": 3, "lokasi_gudang": "Gudang Furnitur"}
+]
